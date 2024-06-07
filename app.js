@@ -1,9 +1,9 @@
 /* Must have for this project
--Cache at least one element using selectElementById.
+-Cache at least one element using getElementById.
 -Cache at least one element using querySelector or querySelectorAll.
 -Use the parent-child-sibling relationship to navigate between elements at least once (firstChild, lastChild, parentNode, nextElementSibling, etc.).
 -Iterate over a collection of elements to accomplish some task
--Create at least one element using createElement.
+-Create at least onereateE element using clement.
 -Use appendChild and/or prepend to add new elements to the DOM.
 -Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content.
 -Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
@@ -16,17 +16,39 @@
 but should include event-based validation in addition to the HTML attribute validation.)
 -Include a README file that contains a description of your application.*/
 
+const text = document.getElementById('chrome')
 
-const This = document.getElementById("Chrome")
+//i want a hover event and when i hover change text green
 
-console.log(this)
+function changeColor(event) {
+    event.preventDefault();
+    text.style.color = 'red'
+}
 
+function colorBack(event) {
+    event.preventDefault();
+    text.style.color = 'black'
+}
 
+text.addEventListener('mouseover', changeColor)
+text.addEventListener('mouseleave', colorBack)
+text.addEventListener('click', function() {
+    text.style.fontSize = '60px'
+})
 
-
-
-
-
+const forms = document.querySelector('#user-forms')
+forms.addEventListener('submit', function(event){
+    event.preventDefault()
+    const paragraph = document.createElement('p')
+    const container = document.getElementById('container')
+    paragraph.innerHTML = `thank you ${event.target[0].value}  ${event.target[1].value} From ${event.target[2].value} ${event.target[3].value}`
+    console.log(paragraph)
+    container.append(paragraph)
+    console.log(event.target[0].value)
+    console.log(event.target[1].value)
+    console.log(event.target[2].value)
+    console.log(event.target[3].value)
+})
 
 
 
